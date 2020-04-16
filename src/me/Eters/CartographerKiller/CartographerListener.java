@@ -1,5 +1,7 @@
 package me.Eters.CartographerKiller;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
@@ -27,6 +29,9 @@ public class CartographerListener implements Listener{
 			Bukkit.getPlayer("Eters").sendMessage("Se encontro mapa!!");
 			ItemStack map = new ItemStack(Material.LEGACY_EMPTY_MAP);
 			MerchantRecipe recipe = new MerchantRecipe(map,event.getRecipe().getMaxUses());
+			recipe.setIngredients(event.getRecipe().getIngredients());
+			recipe.setVillagerExperience(event.getRecipe().getVillagerExperience());
+			//List<ItemStack> ingredients;
 			event.setRecipe(recipe);
 		}
 	}
