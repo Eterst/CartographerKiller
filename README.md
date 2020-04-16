@@ -1,1 +1,2 @@
 # CartographerKiller
+Plugin experimental
