@@ -6,6 +6,6 @@ el cual es resolver un error de **Crash** en el servidor **_La Finca_** de Minec
 Creador: *Eters*
 Estado: *Experiemental Inestable*
 
-###**Informacion del Servidor**:
+## **Informacion del Servidor**:
 **Ip:**`lafinca.ggs.gg`
 **Version:**`1.15.1`
