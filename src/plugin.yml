@@ -1,0 +1,8 @@
+main: me.Eters.CartographerKiller.Main
+name: CartographerKiller
+version: 1.0
+api-version: 1.15
+author: Eters
+ 
+commands:
+  Hello:
