@@ -7,9 +7,12 @@ import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.VillagerAcquireTradeEvent;
+import org.bukkit.event.player.PlayerInteractAtEntityEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.MerchantRecipe;
+import org.bukkit.metadata.FixedMetadataValue;
+import org.bukkit.metadata.MetadataValue;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Villager;
@@ -23,6 +26,8 @@ public class CartographerListener implements Listener{
 		event.setJoinMessage("Welcome, " + event.getPlayer().getName() + "!");
 	}
 	*/
+	public Main main;
+	
 	@EventHandler
 	public void onVillagerAcquireTradeEvent(VillagerAcquireTradeEvent event)
 	{
@@ -47,5 +52,28 @@ public class CartographerListener implements Listener{
 			event.setRecipe(recipe);
 		}
 		*/
+	}
+	
+	@EventHandler
+	public void onPlayerInteractAtEntityEvent(PlayerInteractAtEntityEvent event) {
+		if (event.getRightClicked().getType().equals(EntityType.VILLAGER))
+		{
+			Villager villager = (Villager) event.getRightClicked();
+			if(villager.getProfession().equals(Profession.CARTOGRAPHER))
+			{
+				villager.setVillagerExperience(1);
+				int maxRecipes = villager.getRecipeCount();
+				for(int i = 0;i<maxRecipes;i++)
+				{
+					villager.getRecipe(i).setVillagerExperience(0);
+				}
+				villager.setMetadata("ck", new FixedMetadataValue(main, "yes!"));
+			}
+		}
+	}
+	
+	public CartographerListener(Main main) 
+	{
+		this.main = main;
 	}
 }
